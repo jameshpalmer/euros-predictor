@@ -4,8 +4,11 @@
 	$: user = data.user;
 </script>
 
-{#if !user}
-	<div class="container mx-auto p-4">
-		<p><a href="login/azure" class="underline">Sign in</a> to get started!</p>
-	</div>
-{/if}
+<div class="container mx-auto">
+	<article class="prose">
+		{#if !user}
+			<p><a href="login/azure" class="underline">Sign in</a> to get started!</p>
+		{/if}
+		<p>Rules go here.</p>
+	</article>
+</div>

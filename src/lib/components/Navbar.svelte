@@ -4,7 +4,7 @@
 	export let user: AuthUser | null;
 </script>
 
-<div class="navbar bg-base-100">
+<header class="navbar bg-base-100">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -33,7 +33,9 @@
 				<li><a href="/leaderboard">Leaderboard</a></li>
 			</ul>
 		</div>
-		<a class="btn btn-ghost text-xl" href="/">Praesto Predictor</a>
+		<a class="btn btn-ghost text-xl" href="/"
+			><span class="text-[#AD1313]">Præsto</span> Predictor</a
+		>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
@@ -51,4 +53,12 @@
 			<a class="btn" href="/login/azure">Sign In</a>
 		{/if}
 	</div>
-</div>
+</header>
+
+<style>
+	header {
+		display: flex;
+		justify-content: space-between;
+		view-transition-name: header;
+	}
+</style>
