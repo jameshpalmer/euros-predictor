@@ -2,15 +2,19 @@ import { OAuth2RequestError } from 'arctic';
 import { generateIdFromEntropySize, type RegisteredDatabaseSessionAttributes } from 'lucia';
 import { entraId, lucia } from '$lib/server/auth';
 
-import type { RequestEvent } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { sql } from '$lib/server/db';
 import type { AuthUser } from '$lib/types/db';
 
-export async function GET(event: RequestEvent): Promise<Response> {
-	const code = event.url.searchParams.get('code');
-	const state = event.url.searchParams.get('state');
-	const storedState = event.cookies.get('entra_id_oauth_state') ?? null;
-	const storedCodeVerifier = event.cookies.get('entra_id_code_verifier') ?? null;
+export async function GET({ locals, url, cookies }): Promise<Response> {
+	if (locals.user) {
+		redirect(302, '/');
+	}
+
+	const code = url.searchParams.get('code');
+	const state = url.searchParams.get('state');
+	const storedState = cookies.get('entra_id_oauth_state') ?? null;
+	const storedCodeVerifier = cookies.get('entra_id_code_verifier') ?? null;
 
 	if (!code || !state || !storedCodeVerifier || !storedState || state !== storedState) {
 		return new Response(null, {
@@ -41,7 +45,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			);
 
 			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
+			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
 				...sessionCookie.attributes
 			});
@@ -56,7 +60,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
 			const session = await lucia.createSession(userId, {} as RegisteredDatabaseSessionAttributes);
 			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
+			cookies.set(sessionCookie.name, sessionCookie.value, {
 				path: '.',
 				...sessionCookie.attributes
 			});

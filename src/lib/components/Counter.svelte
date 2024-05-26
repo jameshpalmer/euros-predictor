@@ -34,7 +34,7 @@
 		</svg>
 	</button>
 
-	<div class="relative h-[2em] w-[1em] select-none overflow-hidden text-center text-3xl">
+	<div class="relative h-[1.5em] w-[1em] select-none overflow-hidden text-center text-3xl">
 		<div class="absolute h-full w-full" style="transform: translate(0, {100 * offset}%)">
 			<strong
 				class="absolute -top-full flex h-full w-full select-none items-center justify-center font-normal"

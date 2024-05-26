@@ -1,10 +1,12 @@
-export interface MatchPredictionData {
-	homeTeamName: string | null;
-	awayTeamName: string | null;
+export type UserPrediction = {
+	prediction_id: number;
 	kickoff: Date;
 	round: number;
-	homeTeamScorePrediction: number | null;
-	awayTeamScorePrediction: number | null;
-	homeTeamScore: number | null;
-	awayTeamScore: number | null;
-}
+	home_team_name: string;
+	away_team_name: string;
+	home_team_score: number | null;
+	away_team_score: number | null;
+	home_team_score_prediction: number | null;
+	away_team_score_prediction: number | null;
+	match_played: boolean;
+};

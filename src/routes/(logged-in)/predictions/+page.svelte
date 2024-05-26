@@ -2,7 +2,7 @@
 	import { useQueryClient, createQuery, createMutation } from '@tanstack/svelte-query';
 
 	import { MatchPrediction } from '$lib/components';
-	import type { UserPrediction } from './api/user-predictions/[userId]/+server.js';
+	import type { UserPrediction } from '$lib/types';
 
 	export let data;
 
@@ -80,8 +80,6 @@
 		}
 	});
 </script>
-
-<h1>Hello, {user.name}</h1>
 
 {#if $userPredictions.isLoading}
 	<p>Loading...</p>

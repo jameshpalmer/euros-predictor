@@ -1,7 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {
-	if (!locals.user) redirect(302, '/rules');
+	if (!locals.user) redirect(302, '/');
 
-	redirect(302, '/predictions');
+	return {
+		user: locals.user
+	};
 };

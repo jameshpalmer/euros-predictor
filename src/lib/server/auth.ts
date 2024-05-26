@@ -26,7 +26,7 @@ export const lucia = new Lucia(adapter, {
 	},
 	getUserAttributes: (attributes) => ({
 		id: attributes.id,
-		azureId: attributes.azure_id,
+		azure_id: attributes.azure_id,
 		email: attributes.email,
 		name: attributes.name
 	})

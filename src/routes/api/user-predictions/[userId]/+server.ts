@@ -1,18 +1,6 @@
 import { sql } from '$lib/server/db.js';
+import type { UserPrediction } from '$lib/types/index.js';
 import { error, json } from '@sveltejs/kit';
-
-export type UserPrediction = {
-	prediction_id: number;
-	kickoff: Date;
-	round: number;
-	home_team_name: string;
-	away_team_name: string;
-	home_team_score: number | null;
-	away_team_score: number | null;
-	home_team_score_prediction: number | null;
-	away_team_score_prediction: number | null;
-	match_played: boolean;
-};
 
 export async function GET({ locals, params }) {
 	if (!locals.user) {

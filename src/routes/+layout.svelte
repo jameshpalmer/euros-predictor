@@ -1,14 +1,15 @@
 <script>
 	import '../app.css';
-	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
+	import { Navbar } from '$lib/components';
 
-	const queryClient = new QueryClient();
+	export let data;
+
+	$: user = data.user;
 </script>
 
 <svelte:head>
 	<title>Praesto Predictor</title>
 </svelte:head>
 
-<QueryClientProvider client={queryClient}>
-	<slot />
-</QueryClientProvider>
+<Navbar {user} />
+<slot />

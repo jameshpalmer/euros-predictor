@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Counter } from '.';
-	import type { UserPrediction } from '../../routes/api/user-predictions/[userId]/+server';
+	import type { UserPrediction } from '$lib/types';
 
 	export let userPrediction: UserPrediction;
 	export let makePrediction: ({
@@ -30,7 +30,8 @@
 	}
 </script>
 
-<div class="flex">
+<div class="flex items-center">
+	<p class="text-2xl">{userPrediction.home_team_name}</p>
 	<Counter
 		bind:count={userPrediction.home_team_score_prediction}
 		{updatePrediction}
@@ -41,4 +42,5 @@
 		{updatePrediction}
 		{initialisePrediction}
 	/>
+	<p class="text-2xl">{userPrediction.away_team_name}</p>
 </div>
