@@ -7,8 +7,8 @@
 	export let currentTheme: (typeof themes)[number] | undefined;
 </script>
 
-<header class="navbar sticky top-0 z-10 bg-base-100 shadow-sm">
-	<div class="navbar-start">
+<header class="navbar sticky top-0 z-10 bg-base-100 bg-opacity-80 shadow-sm backdrop-blur-md">
+	<div class="navbar-start w-full justify-between sm:justify-start lg:w-1/2">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
 				<svg
@@ -34,6 +34,7 @@
 					<li><a href="/predictions">Predictions</a></li>
 				{/if}
 				<li><a href="/leaderboard">Leaderboard</a></li>
+				<li><a href="/logout">Sign Out</a></li>
 			</ul>
 		</div>
 		<a class="btn btn-ghost text-xl" href="/">
@@ -49,12 +50,12 @@
 			<li><a href="/leaderboard">Leaderboard</a></li>
 		</ul>
 	</div>
-	<div class="navbar-end">
+	<div class="navbar-end hidden sm:inline-flex">
 		<ThemeController {currentTheme} />
 		{#if user}
-			<a class="btn" href="/logout">Sign Out</a>
+			<a class="btn hidden sm:inline-flex" href="/logout">Sign Out</a>
 		{:else}
-			<a class="btn" href="/login/azure">Sign In</a>
+			<a class="btn hidden sm:inline-flex" href="/login/azure">Sign In</a>
 		{/if}
 	</div>
 </header>

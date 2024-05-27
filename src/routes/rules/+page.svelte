@@ -12,7 +12,7 @@
 		{/if}
 		<p>
 			Welcome to the quadrennial <i>Praesto Euro 2024 Footbal Predictions</i> competition! Participants
-			will predict the outcomes of matches in the tournament to earn points. Here&#39;s how it works:
+			can predict the outcomes of matches in the tournament to earn points. Here&#39;s how it works:
 		</p>
 		<h2>Group Stage Scoring</h2>
 		<ul>
@@ -55,33 +55,20 @@
 			<li><strong>10 points</strong> for predicting the exact score.</li>
 		</ul>
 
-		<h2>How to Make Predictions</h2>
-		<ol>
-			<li>
-				<strong>Pick a Match:</strong> Choose any upcoming match from the tournament schedule.
-			</li>
-			<li>
-				<strong>Predict the Result:</strong> Enter your prediction for the match result (win for either
-				team or draw).
-			</li>
-			<li><strong>Predict the Score:</strong> Enter your predicted final score for both teams.</li>
-		</ol>
-
 		<h2>Scoring Example</h2>
-		<p>If Team A beats Team B with a score of 2-1:</p>
+		<p>If Team A beats Team B with a score of 2-1 in the group stage:</p>
 		<ul>
-			<li>If you predicted a win for Team A, you earn points for the correct result.</li>
+			<li>If you predicted a 2-0 win for Team A, you earn 1 point (for the correct result).</li>
 			<li>
-				If you predicted a 1-goal difference in favor of Team A (e.g., 3-2), you earn points for the
-				correct goal difference.
+				If you predicted a 1-goal difference in favor of Team A (e.g., 3-2), you earn 2 points.
 			</li>
-			<li>If you predicted the exact score of 2-1, you earn points for the exact score.</li>
+			<li>If you predicted the exact score of 2-1, you earn 3 points.</li>
 		</ul>
 
 		<h2>Leaderboard</h2>
 		<p>
-			Check the leaderboard to see where you stand among colleagues. The person with the most points
-			at the end of the tournament wins.
+			Check the <a href="/leaderboard">leaderboard</a> to see where you stand among colleagues. The person
+			with the most points at the end of the tournament wins.
 		</p>
 
 		<h2>Additional Rules</h2>
@@ -95,16 +82,18 @@
 
 		<h2>Terms and Conditions</h2>
 		<ul>
-			<li>Only Praesto group employees.</li>
-			<li>We reserve the right to tweak the rules if needed.</li>
+			<li>Only Praesto Group employees are allowed to participate.</li>
 		</ul>
 
 		<h2>Prizes</h2>
 		<ul>
-			<li>Bragging rights (lasting until 2026).</li>
-			<li>We reserve the right to tweak the rules if needed.</li>
+			<li>Bragging rights (until 2026).</li>
 		</ul>
-
+		<br />
+		<p>
+			Please reach out to me (<a href="mailto:jpalmer@praestoconsulting.com">James Palmer</a>) on
+			Teams if you have any questions or problems.
+		</p>
 		<p>Good luck, everyone!</p>
 	</article>
 </div>
