@@ -7,7 +7,7 @@
 	export let currentTheme: (typeof themes)[number] | undefined;
 </script>
 
-<header class="navbar bg-base-100">
+<header class="navbar sticky top-0 z-10 bg-base-100 shadow-sm">
 	<div class="navbar-start">
 		<div class="dropdown">
 			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">

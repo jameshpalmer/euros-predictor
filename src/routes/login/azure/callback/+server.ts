@@ -5,6 +5,7 @@ import { entraId, lucia } from '$lib/server/auth';
 import { redirect } from '@sveltejs/kit';
 import { sql } from '$lib/server/db';
 import type { AuthUser } from '$lib/types/db';
+import { createUserAndPredictions } from '$lib/server/utils.js';
 
 export async function GET({ locals, url, cookies }): Promise<Response> {
 	if (locals.user) {
@@ -31,7 +32,6 @@ export async function GET({ locals, url, cookies }): Promise<Response> {
 		});
 		const entraIdUser: EntraIdUser = await entraIdUserResponse.json();
 
-		// Replace this with your own DB client.
 		const existingUserQuery = await sql<
 			AuthUser[]
 		>`SELECT * FROM auth_user WHERE azure_id = ${entraIdUser.sub}`;
@@ -50,13 +50,9 @@ export async function GET({ locals, url, cookies }): Promise<Response> {
 				...sessionCookie.attributes
 			});
 		} else {
-			const userId = generateIdFromEntropySize(10); // 16 characters long
+			const userId = generateIdFromEntropySize(10);
 
-			// Replace this with your own DB client.
-			await sql`
-        INSERT INTO auth_user (id, azure_id, email, name)
-        VALUES (${userId}, ${entraIdUser.sub}, ${entraIdUser.email}, ${entraIdUser.givenname + ' ' + entraIdUser.familyname})
-      `;
+			await createUserAndPredictions(userId, entraIdUser);
 
 			const session = await lucia.createSession(userId, {} as RegisteredDatabaseSessionAttributes);
 			const sessionCookie = lucia.createSessionCookie(session.id);
@@ -85,7 +81,7 @@ export async function GET({ locals, url, cookies }): Promise<Response> {
 	}
 }
 
-interface EntraIdUser {
+export interface EntraIdUser {
 	sub: string;
 	email: string;
 	givenname: string;

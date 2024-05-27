@@ -40,6 +40,8 @@ export async function GET({ locals, params }) {
 			LEFT JOIN team at ON m.away_team_id = at.id
       LEFT JOIN match_prediction mp ON m.id = mp.match_id
       WHERE mp.user_id = ${userId}
+			AND m.home_team_id IS NOT NULL
+			AND m.away_team_id IS NOT NULL
       ${!isUser ? sql`AND m.kickoff_utc < NOW()` : sql``}
 			ORDER BY m.kickoff_utc
     `
