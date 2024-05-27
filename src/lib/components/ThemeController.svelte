@@ -12,7 +12,7 @@
 	}
 </script>
 
-<label class="swap swap-rotate hidden pr-4 sm:inline-grid">
+<label class="swap swap-rotate hidden pr-4 sm:inline-grid" for="theme-controller">
 	<!-- this hidden checkbox controls the state -->
 	<input
 		type="checkbox"
@@ -20,6 +20,7 @@
 		value={currentTheme}
 		on:change={toggleTheme}
 		checked={currentTheme === 'dark'}
+		aria-label="Toggle theme"
 	/>
 	<!-- sun icon -->
 	<svg

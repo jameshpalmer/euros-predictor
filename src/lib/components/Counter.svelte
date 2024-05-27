@@ -18,16 +18,9 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
-
-	let isHovered = false;
 </script>
 
-<div
-	class={'flex flex-col items-center ' + className}
-	on:mouseenter={() => (isHovered = true)}
-	on:mouseleave={() => (isHovered = false)}
-	aria-hidden="true"
->
+<div class={'flex flex-col items-center ' + className}>
 	<button
 		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 hover:bg-base-300 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
 		on:pointerdown={() => {
@@ -51,7 +44,6 @@
 		<div class="absolute h-full w-full" style="transform: translate(0, {100 * offset}%)">
 			<strong
 				class="absolute -top-full flex h-full w-full select-none items-center justify-center font-normal"
-				aria-hidden="true"
 			>
 				{Math.floor($displayedCount + 1) === -1 ? '?' : Math.floor($displayedCount + 1)}
 			</strong>

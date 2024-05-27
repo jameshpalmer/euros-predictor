@@ -10,7 +10,7 @@
 <header class="navbar sticky top-0 z-10 bg-base-100 bg-opacity-80 shadow-sm backdrop-blur-md">
 	<div class="navbar-start w-full justify-between sm:justify-start lg:w-1/2">
 		<div class="dropdown">
-			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden" aria-label="Menu">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					class="h-5 w-5"
