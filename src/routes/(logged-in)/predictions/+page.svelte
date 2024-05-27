@@ -88,7 +88,14 @@
 {:else if $userPredictions.data.length === 0}
 	<p>No predictions yet!</p>
 {:else}
-	{#each $userPredictions.data as prediction}
-		<MatchPrediction userPrediction={prediction} makePrediction={$makePredictionMutation.mutate} />
-	{/each}
+	<div class="flex w-screen justify-center px-2 sm:px-8 lg:px-24">
+		<div class="grid w-full max-w-[1020px] grid-cols-1 gap-x-12 lg:grid-cols-2">
+			{#each $userPredictions.data as prediction}
+				<MatchPrediction
+					userPrediction={prediction}
+					makePrediction={$makePredictionMutation.mutate}
+				/>
+			{/each}
+		</div>
+	</div>
 {/if}

@@ -2,6 +2,8 @@ export type UserPrediction = {
 	prediction_id: number;
 	kickoff: Date;
 	round: number;
+	location: string;
+	description: string;
 	home_team_name: string;
 	away_team_name: string;
 	home_team_score: number | null;

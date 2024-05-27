@@ -26,6 +26,8 @@ export async function GET({ locals, params }) {
         mp.id as prediction_id,
         m.kickoff,
         m.round,
+				m.location,
+				m.description,
 				ht.name as home_team_name,
 				at.name as away_team_name,
         m.home_team_score,

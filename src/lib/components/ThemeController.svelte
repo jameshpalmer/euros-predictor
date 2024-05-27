@@ -10,8 +10,6 @@
 		document.cookie = `theme=${theme}; path=/; SameSite=Strict;`;
 		currentTheme = theme;
 	}
-
-	$: console.log('currentTheme:', currentTheme);
 </script>
 
 <label class="swap swap-rotate hidden pr-4 sm:inline-grid">
