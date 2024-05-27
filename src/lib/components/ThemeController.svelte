@@ -17,6 +17,7 @@
 	<input
 		type="checkbox"
 		class="theme-controller"
+		id="theme-controller"
 		value={currentTheme}
 		on:change={toggleTheme}
 		checked={currentTheme === 'dark'}
