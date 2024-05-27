@@ -24,7 +24,7 @@ export async function GET({ locals, params }) {
 		sql<UserPrediction[]>`
       SELECT
         mp.id as prediction_id,
-        m.kickoff_utc,
+        m.kickoff_utc AT TIME ZONE 'UTC' as kickoff_utc,
         m.round,
 				m.location,
 				m.description,

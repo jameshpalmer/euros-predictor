@@ -7,6 +7,7 @@
 			enhanced: true
 		}
 	}) as Record<string, { default: string }>;
+	import { DateTime } from 'luxon';
 
 	export let userPrediction: UserPrediction;
 
@@ -42,6 +43,10 @@
 			away_team_score_prediction: 0
 		};
 	}
+
+	const kickoffUtc = DateTime.fromISO(userPrediction.kickoff_utc);
+	const localDateTime = kickoffUtc.setZone(DateTime.local().zoneName);
+	const formattedDate = localDateTime.toFormat('ccc d LLLL HH:mm');
 </script>
 
 <div class="group flex flex-col items-center">
@@ -49,13 +54,7 @@
 		class="pointer-events-none h-0 text-sm opacity-0 sm:opacity-60 sm:transition-opacity sm:group-hover:opacity-0"
 	>
 		{userPrediction.description}{' • '}
-		{new Date(userPrediction.kickoff_utc).toLocaleString('en-GB', {
-			weekday: 'short',
-			day: 'numeric',
-			month: 'short',
-			hour: 'numeric',
-			minute: 'numeric'
-		})}
+		{formattedDate}
 	</p>
 	<div class="flex w-full max-w-[450px] items-center justify-between">
 		<div
