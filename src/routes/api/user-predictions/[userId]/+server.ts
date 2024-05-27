@@ -24,7 +24,7 @@ export async function GET({ locals, params }) {
 		sql<UserPrediction[]>`
       SELECT
         mp.id as prediction_id,
-        m.kickoff,
+        m.kickoff_utc,
         m.round,
 				m.location,
 				m.description,
@@ -34,14 +34,14 @@ export async function GET({ locals, params }) {
         m.away_team_score,
         mp.home_team_score as home_team_score_prediction,
         mp.away_team_score as away_team_score_prediction,
-        m.kickoff < NOW() as match_played
+        m.kickoff_utc < NOW() as match_played
       FROM match m
 			LEFT JOIN team ht ON m.home_team_id = ht.id
 			LEFT JOIN team at ON m.away_team_id = at.id
       LEFT JOIN match_prediction mp ON m.id = mp.match_id
       WHERE mp.user_id = ${userId}
-      ${!isUser ? sql`AND m.kickoff < NOW()` : sql``}
-			ORDER BY m.kickoff
+      ${!isUser ? sql`AND m.kickoff_utc < NOW()` : sql``}
+			ORDER BY m.kickoff_utc
     `
 	]);
 

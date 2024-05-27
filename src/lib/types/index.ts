@@ -1,6 +1,6 @@
 export type UserPrediction = {
 	prediction_id: number;
-	kickoff: Date;
+	kickoff_utc: Date;
 	round: number;
 	location: string;
 	description: string;

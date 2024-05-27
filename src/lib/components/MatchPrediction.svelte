@@ -49,7 +49,7 @@
 		class="pointer-events-none h-0 text-sm opacity-0 sm:opacity-60 sm:transition-opacity sm:group-hover:opacity-0"
 	>
 		{userPrediction.description}{' • '}
-		{new Date(userPrediction.kickoff).toLocaleString('en-GB', {
+		{new Date(userPrediction.kickoff_utc).toLocaleString('en-GB', {
 			weekday: 'short',
 			day: 'numeric',
 			month: 'short',

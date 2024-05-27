@@ -34,11 +34,11 @@ export async function GET({ locals, params }) {
 			WHERE m.id = ${matchId}
 			AND mp.home_team_score IS NOT NULL
 			AND mp.away_team_score IS NOT NULL
-			ORDER BY m.kickoff
+			ORDER BY m.kickoff_utc
 		`
 	]);
 
-	if (match.length === 0 || match[0].kickoff > new Date()) {
+	if (match.length === 0 || match[0].kickoff_utc > new Date()) {
 		return error(400, 'Match not found');
 	}
 

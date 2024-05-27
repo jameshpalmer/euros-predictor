@@ -20,7 +20,7 @@ export interface Match {
 	id: number;
 	home_team_id: number | null; // null means "TBD"
 	away_team_id: number | null;
-	kickoff: Date;
+	kickoff_utc: Date;
 	round: number;
 	home_team_score: number | null; // null if match hasn't been played yet
 	away_team_score: number | null;
