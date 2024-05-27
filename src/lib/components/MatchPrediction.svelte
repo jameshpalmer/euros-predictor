@@ -76,6 +76,7 @@
 		<Counter
 			bind:count={userPrediction.home_team_score_prediction}
 			class="w-1/12"
+			maxCount={userPrediction.home_team_name === 'England' ? 100 : 10}
 			{updatePrediction}
 			{initialisePrediction}
 		/>
@@ -83,6 +84,7 @@
 		<Counter
 			bind:count={userPrediction.away_team_score_prediction}
 			class="w-1/12"
+			maxCount={userPrediction.away_team_name === 'England' ? 100 : 10}
 			{updatePrediction}
 			{initialisePrediction}
 		/>

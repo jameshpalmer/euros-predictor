@@ -4,6 +4,7 @@
 	let className: string = '';
 	export { className as class };
 	export let count: number | null;
+	export let maxCount = 10;
 	export let updatePrediction: () => void;
 	export let initialisePrediction: () => void;
 
@@ -30,7 +31,7 @@
 	<button
 		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 hover:bg-base-300 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
 		on:pointerdown={() => {
-			if (count !== null && count < 10) {
+			if (count !== null && count < maxCount) {
 				count += 1;
 				updatePrediction();
 			} else if (count === null) {
@@ -39,7 +40,7 @@
 			}
 		}}
 		aria-label="Increase by one"
-		disabled={count !== null && count >= 10}
+		disabled={count !== null && count >= maxCount}
 	>
 		<svg class="h-1/2 w-1/3" aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" class="stroke-2" />
