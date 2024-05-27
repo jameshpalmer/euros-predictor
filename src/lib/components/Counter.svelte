@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { spring, type Spring } from 'svelte/motion';
+	import { fly } from 'svelte/transition';
 
 	export let count: number | null;
 	export let updatePrediction: () => void;
@@ -15,11 +16,18 @@
 		// handle negative numbers
 		return ((n % m) + m) % m;
 	}
+
+	let isHovered = false;
 </script>
 
-<div class="flex">
+<div
+	class="flex"
+	on:mouseenter={() => (isHovered = true)}
+	on:mouseleave={() => (isHovered = false)}
+	aria-hidden="true"
+>
 	<button
-		class="flex w-[1.5em] touch-manipulation items-center justify-center rounded-lg stroke-gray-600 text-2xl hover:bg-gray-100 disabled:stroke-gray-200 disabled:hover:bg-transparent"
+		class="button flex w-0 touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-0 transition-all duration-300 hover:bg-neutral disabled:stroke-neutral disabled:hover:bg-transparent group-hover:w-[1.5em] group-hover:opacity-100"
 		on:pointerdown={() => {
 			if (count !== null && count > 0) {
 				count -= 1;
@@ -49,7 +57,7 @@
 	</div>
 
 	<button
-		class="flex w-[1.5em] touch-manipulation items-center justify-center rounded-lg stroke-gray-600 text-2xl hover:bg-gray-100 disabled:stroke-gray-200 disabled:hover:bg-transparent"
+		class="button flex w-0 touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-0 transition-all duration-300 hover:bg-neutral disabled:stroke-neutral disabled:hover:bg-transparent group-hover:w-[1.5em] group-hover:opacity-100"
 		on:pointerdown={() => {
 			if (count !== null && count < 10) {
 				count += 1;

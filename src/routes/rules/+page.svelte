@@ -4,7 +4,7 @@
 	$: user = data.user;
 </script>
 
-<div class="container mx-auto">
+<div class="container px-8">
 	<article class="prose">
 		{#if !user}
 			<p><a href="login/azure" class="underline">Sign in</a> to get started!</p>

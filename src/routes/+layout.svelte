@@ -3,6 +3,7 @@
 	import { Navbar } from '$lib/components';
 	import { onNavigate } from '$app/navigation';
 
+	// view transition
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 
@@ -20,14 +21,18 @@
 
 	export let data;
 
-	$: user = data.user;
+	let { user, theme } = data;
+
+	if (!theme && typeof window !== 'undefined') {
+		theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	}
 </script>
 
 <svelte:head>
 	<title>Praesto Predictor</title>
 </svelte:head>
 
-<Navbar {user} />
+<Navbar {user} currentTheme={theme} />
 <slot />
 
 <style>
