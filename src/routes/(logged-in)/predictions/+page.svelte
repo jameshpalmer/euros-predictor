@@ -88,7 +88,7 @@
 {:else if $userPredictions.data.length === 0}
 	<p>No predictions yet!</p>
 {:else}
-	<div class="flex w-screen justify-center p-2 sm:px-8 sm:pt-6 lg:px-24">
+	<div class="flex w-screen max-w-full justify-center p-2 sm:px-8 sm:pt-6 lg:px-24">
 		<div class="grid w-full max-w-[1020px] grid-cols-1 gap-x-12 lg:grid-cols-2">
 			{#each $userPredictions.data as prediction}
 				<MatchPrediction
