@@ -1,6 +1,7 @@
 import { sql } from '$lib/server/db.js';
 import type { Match } from '$lib/types/db.js';
 import { error, json } from '@sveltejs/kit';
+import { DateTime } from 'luxon';
 
 export async function GET({ locals, params }) {
 	if (!locals.user) {
@@ -38,8 +39,12 @@ export async function GET({ locals, params }) {
 		`
 	]);
 
-	if (match.length === 0 || match[0].kickoff_utc > new Date()) {
+	if (match.length === 0) {
 		return error(400, 'Match not found');
+	}
+
+	if (DateTime.fromJSDate(match[0].kickoff_utc, { zone: 'utc' }) > DateTime.utc()) {
+		return error(400, 'Match has not started yet');
 	}
 
 	return json(matchPredictions);

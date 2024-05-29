@@ -84,8 +84,8 @@ export async function GET({ locals, url, cookies }): Promise<Response> {
 export interface EntraIdUser {
 	sub: string;
 	email: string;
-	givenname: string;
-	familyname: string;
+	given_name: string;
+	family_name: string;
 	locale: string;
 	picture: string;
 	'@odata.context': string;
