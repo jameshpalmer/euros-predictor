@@ -51,31 +51,35 @@
 			</div>
 		</div>
 	{/if}
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="hidden sm:table-cell"></th>
-				<th>Name</th>
-				<th>Team</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each sweepstakeEntries as entry}
-				<tr class={entry.id === user?.id ? 'bg-base-200' : ''}>
+	{#if sweepstakeEntries.length > 0}
+		<table class="table">
+			<thead>
+				<tr>
 					<th class="hidden sm:table-cell"></th>
-					<td>{entry.name}</td>
-					<td>
-						<div class="flex items-center gap-3">
-							<img
-								src={flagMap.get(entry.team.toLowerCase())}
-								alt={entry.team}
-								class="pointer-events-none h-6 w-auto select-none items-center"
-							/>
-							<p>{entry.team}</p>
-						</div>
-					</td>
+					<th>Name</th>
+					<th>Team</th>
 				</tr>
-			{/each}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{#each sweepstakeEntries as entry}
+					<tr class={entry.id === user?.id ? 'bg-base-200' : ''}>
+						<th class="hidden sm:table-cell"></th>
+						<td>{entry.name}</td>
+						<td>
+							<div class="flex items-center gap-3">
+								<img
+									src={flagMap.get(entry.team.toLowerCase())}
+									alt={entry.team}
+									class="pointer-events-none h-6 w-auto select-none items-center"
+								/>
+								<p>{entry.team}</p>
+							</div>
+						</td>
+					</tr>
+				{/each}
+			</tbody>
+		</table>
+	{:else}
+		<p class="mt-8">No entries yet...</p>
+	{/if}
 </div>
