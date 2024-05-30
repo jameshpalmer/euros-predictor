@@ -22,7 +22,7 @@
 
 <div class={'flex flex-col items-center ' + className}>
 	<button
-		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 hover:bg-base-300 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
+		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:hover:bg-base-300 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
 		on:pointerdown={() => {
 			if (count !== null && count < maxCount) {
 				count += 1;
@@ -54,7 +54,7 @@
 	</div>
 
 	<button
-		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 hover:bg-base-300 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
+		class="flex h-[1em] w-[1.5em] touch-manipulation items-center justify-center overflow-hidden rounded-lg stroke-base-content text-2xl opacity-100 disabled:opacity-20 disabled:hover:bg-transparent sm:opacity-0 sm:hover:bg-base-300 sm:disabled:opacity-0 sm:group-hover:opacity-100 sm:group-hover:disabled:opacity-20"
 		on:pointerdown={() => {
 			if (count !== null && count > 0) {
 				count -= 1;
