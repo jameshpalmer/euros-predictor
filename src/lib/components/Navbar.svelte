@@ -34,6 +34,7 @@
 					<li><a href="/predictions">Predictions</a></li>
 				{/if}
 				<li><a href="/leaderboard">Leaderboard</a></li>
+				<li><a href="/sweepstake">Sweepstake</a></li>
 				<li><a href="/logout">Sign Out</a></li>
 			</ul>
 		</div>
@@ -48,6 +49,7 @@
 				<li><a href="/predictions">Predictions</a></li>
 			{/if}
 			<li><a href="/leaderboard">Leaderboard</a></li>
+			<li><a href="/sweepstake">Sweepstake</a></li>
 		</ul>
 	</div>
 	<div class="navbar-end hidden sm:inline-flex">
