@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { applyAction, enhance } from '$app/forms';
-
 	const flags = import.meta.glob('$lib/flags/*.svg', {
 		eager: true,
 		query: {
@@ -52,7 +50,7 @@
 		</div>
 	{/if}
 	{#if sweepstakeEntries.length > 0}
-		<table class="table">
+		<table class="table w-full sm:w-2/3">
 			<thead>
 				<tr>
 					<th class="hidden sm:table-cell"></th>
