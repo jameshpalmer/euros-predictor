@@ -1,5 +1,6 @@
 import type { Actions } from './$types';
 import { sql } from '$lib/server/db';
+import { fail } from '@sveltejs/kit';
 
 export const load = async ({ locals }) => {
 	const user = locals.user;
@@ -41,44 +42,46 @@ export const load = async ({ locals }) => {
 
 export const actions: Actions = {
 	default: async ({ locals }) => {
-		if (!locals.user) {
-			return { status: 401 };
+		try {
+			const result = await sql.begin(async (transaction) => {
+				if (!locals.user) {
+					return { status: 401 };
+				}
+
+				const team = await transaction`
+					WITH selected_team AS (
+						SELECT id
+						FROM team
+						WHERE id NOT IN (
+							SELECT sweepstake_team_id
+							FROM auth_user
+							WHERE sweepstake_team_id IS NOT NULL
+						)
+						ORDER BY RANDOM()
+						LIMIT 1
+						FOR UPDATE SKIP LOCKED
+					)
+					UPDATE auth_user
+					SET sweepstake_team_id = (SELECT id FROM selected_team)
+					WHERE id = ${locals.user.id}
+					AND sweepstake_team_id IS NULL
+					RETURNING (SELECT id FROM selected_team) AS team_id;
+				`;
+
+				// Check if the update was successful by looking at the returned result
+				if (team.count === 0 || !team[0].team_id) {
+					throw new Error('No teams available or you have already selected a team');
+				}
+
+				return team[0].team_id;
+			});
+
+			return { success: true, team_id: result };
+		} catch (error: any) {
+			if (error.message === 'No teams available or you have already selected a team') {
+				return fail(400, { error: error.message });
+			}
+			return fail(500, { error: 'An error occurred while selecting a team' });
 		}
-		// check that the user has not already selected a team
-		const [existingTeam, team] = await Promise.all([
-			sql`
-      SELECT sweepstake_team_id
-      FROM auth_user
-      WHERE id = ${locals.user.id}
-      AND sweepstake_team_id IS NOT NULL;
-    `,
-			sql<{ id: number }[]>`
-      SELECT id
-      FROM team
-      WHERE id NOT IN (
-        SELECT sweepstake_team_id
-        FROM auth_user
-        WHERE sweepstake_team_id IS NOT NULL
-      )
-      ORDER BY RANDOM()
-      LIMIT 1;
-    `
-		]);
-
-		if (existingTeam.length !== 0) {
-			return { status: 400, body: { error: 'You have already selected a team' } };
-		}
-
-		if (team.length === 0) {
-			return { status: 400, body: { error: 'No teams available' } };
-		}
-
-		await sql`
-      UPDATE auth_user
-      SET sweepstake_team_id = ${team[0].id}
-      WHERE id = ${locals.user.id};
-    `;
-
-		return { success: true };
 	}
 };
