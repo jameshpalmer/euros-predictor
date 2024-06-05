@@ -57,7 +57,7 @@ export const actions: Actions = {
 							FROM auth_user
 							WHERE sweepstake_team_id IS NOT NULL
 						)
-						AND id IN (1, 2, 3, 4, 5)
+						AND id IN (1, 2, 3)
 						ORDER BY RANDOM()
 						LIMIT 1
 						FOR UPDATE SKIP LOCKED
