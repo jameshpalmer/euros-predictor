@@ -43,7 +43,7 @@ export async function GET({ locals, params }) {
 			AND m.home_team_id IS NOT NULL
 			AND m.away_team_id IS NOT NULL
       ${!isUser ? sql`AND m.kickoff_utc < NOW()` : sql``}
-			ORDER BY m.kickoff_utc
+			ORDER BY m.kickoff_utc, m.id
     `
 	]);
 
