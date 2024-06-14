@@ -19,7 +19,7 @@ export async function PUT({ locals, request, params }) {
 		throw error(400, 'Missing predictionId parameter');
 	}
 
-	const prediction = await sql<{ user_id: string; kickoff_utc: string }[]>`
+	const prediction = await sql<{ user_id: string; kickoff_utc: Date }[]>`
     SELECT 
       mp.user_id,
       m.kickoff_utc
@@ -36,7 +36,7 @@ export async function PUT({ locals, request, params }) {
 	const { user_id, kickoff_utc } = prediction[0];
 
 	const now = DateTime.now();
-	const kickoffTime = DateTime.fromISO(kickoff_utc);
+	const kickoffTime = DateTime.fromJSDate(kickoff_utc);
 
 	if (kickoffTime < now) {
 		throw error(400, 'Match has already started');

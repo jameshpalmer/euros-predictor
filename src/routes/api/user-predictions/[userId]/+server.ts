@@ -42,7 +42,7 @@ export async function GET({ locals, params }) {
       WHERE mp.user_id = ${userId}
 			AND m.home_team_id IS NOT NULL
 			AND m.away_team_id IS NOT NULL
-      ${!isUser ? sql`AND m.kickoff_utc < NOW()` : sql``}
+      AND m.kickoff_utc > NOW()
 			ORDER BY m.kickoff_utc, m.id
     `
 	]);
