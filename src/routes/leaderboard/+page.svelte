@@ -13,7 +13,7 @@
 		</thead>
 		<tbody>
 			{#each data.leaderboard as user}
-				<tr>
+				<tr class={data.user?.id === user.user_id ? 'bg-base-200' : ''}>
 					<td class="opacity-30">{user.rank}</td>
 					<td
 						class={user.rank == 1
