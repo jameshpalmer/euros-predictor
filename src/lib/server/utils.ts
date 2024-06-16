@@ -20,3 +20,42 @@ export async function createUserAndPredictions(userId: string, user: EntraIdUser
     )
   `;
 }
+
+export function getScoringRules(round: number) {
+	switch (round) {
+		case 1:
+		case 2:
+		case 3:
+			return {
+				result: 1,
+				goalDifference: 2,
+				exactScore: 3
+			};
+		case 4:
+			return {
+				result: 2,
+				goalDifference: 3,
+				exactScore: 4
+			};
+		case 5:
+			return {
+				result: 3,
+				goalDifference: 5,
+				exactScore: 7
+			};
+		case 6:
+			return {
+				result: 4,
+				goalDifference: 6,
+				exactScore: 8
+			};
+		case 7:
+			return {
+				result: 5,
+				goalDifference: 7,
+				exactScore: 10
+			};
+		default:
+			throw new Error('Invalid round');
+	}
+}

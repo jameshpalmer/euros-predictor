@@ -3,6 +3,7 @@ export interface AuthUser {
 	azure_id: string;
 	email: string;
 	name: string;
+	admin: boolean;
 }
 
 export interface UserSession {

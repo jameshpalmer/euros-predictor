@@ -28,7 +28,8 @@ export const lucia = new Lucia(adapter, {
 		id: attributes.id,
 		azure_id: attributes.azure_id,
 		email: attributes.email,
-		name: attributes.name
+		name: attributes.name,
+		admin: attributes.admin
 	})
 });
 
