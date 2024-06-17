@@ -44,7 +44,7 @@
 		};
 	}
 
-	const kickoffUtc = DateTime.fromISO(userPrediction.kickoff_utc);
+	const kickoffUtc = DateTime.fromISO(userPrediction.kickoff);
 	const localDateTime = kickoffUtc.setZone(DateTime.local().zoneName);
 	const formattedDate = localDateTime.toFormat('ccc d LLLL HH:mm');
 </script>

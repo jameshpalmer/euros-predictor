@@ -1,8 +1,23 @@
 <script lang="ts">
+	import { DateTime } from 'luxon';
 	export let data;
+
+	let lastUpdated: string | null = null;
+	if (data.lastUpdatedUtc) {
+		// Parse the date string as UTC
+		let utcDateTime = DateTime.fromISO(data.lastUpdatedUtc, { zone: 'utc' });
+		console.log('Parsed as UTC DateTime object:', utcDateTime.toString());
+
+		// Convert to local time zone
+		let localDateTime = utcDateTime.setZone(DateTime.local().zoneName);
+		console.log('Converted to local DateTime object:', localDateTime.toString());
+
+		// Format the local time zone date
+		lastUpdated = localDateTime.toFormat('ccc d LLLL HH:mm');
+	}
 </script>
 
-<div class="flex w-screen max-w-full justify-center p-8 pt-2 sm:pt-8">
+<div class="flex w-screen max-w-full flex-col items-center p-8 pt-2 sm:pt-8">
 	<table class="table w-full sm:w-2/3">
 		<thead>
 			<tr>
@@ -29,4 +44,5 @@
 			{/each}
 		</tbody>
 	</table>
+	<p class="opacity-30">Last updated: {lastUpdated}</p>
 </div>

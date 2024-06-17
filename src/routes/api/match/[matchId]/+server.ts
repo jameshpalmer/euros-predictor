@@ -34,11 +34,11 @@ export async function POST({ request, locals, params }) {
 	// Check if match exists and has started
 	const match = await sql<
 		{
-			kickoff_utc: Date;
+			kickoff: Date;
 			round: number;
 		}[]
 	>`
-    SELECT kickoff_utc, round
+    SELECT kickoff, round
     FROM match
     WHERE id = ${matchId}
   `;
@@ -47,7 +47,7 @@ export async function POST({ request, locals, params }) {
 		throw error(400, 'Match not found');
 	}
 
-	if (DateTime.fromJSDate(match[0].kickoff_utc, { zone: 'utc' }) > DateTime.utc()) {
+	if (DateTime.fromJSDate(match[0].kickoff, { zone: 'utc' }) > DateTime.utc()) {
 		return error(400, 'Match has not started yet');
 	}
 

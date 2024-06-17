@@ -35,7 +35,7 @@ export async function GET({ locals, params }) {
 			WHERE m.id = ${matchId}
 			AND mp.home_team_score IS NOT NULL
 			AND mp.away_team_score IS NOT NULL
-			ORDER BY m.kickoff_utc
+			ORDER BY m.kickoff
 		`
 	]);
 
@@ -43,7 +43,7 @@ export async function GET({ locals, params }) {
 		return error(400, 'Match not found');
 	}
 
-	if (DateTime.fromJSDate(match[0].kickoff_utc, { zone: 'utc' }) > DateTime.utc()) {
+	if (DateTime.fromJSDate(match[0].kickoff, { zone: 'utc' }) > DateTime.utc()) {
 		return error(400, 'Match has not started yet');
 	}
 

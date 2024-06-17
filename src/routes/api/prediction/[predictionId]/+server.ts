@@ -19,10 +19,10 @@ export async function PUT({ locals, request, params }) {
 		throw error(400, 'Missing predictionId parameter');
 	}
 
-	const prediction = await sql<{ user_id: string; kickoff_utc: Date }[]>`
+	const prediction = await sql<{ user_id: string; kickoff: Date }[]>`
     SELECT 
       mp.user_id,
-      m.kickoff_utc
+      m.kickoff
     FROM match_prediction mp
     LEFT JOIN match m ON mp.match_id = m.id
     WHERE mp.id = ${predictionId}
@@ -33,10 +33,10 @@ export async function PUT({ locals, request, params }) {
 		throw error(400, 'Prediction not found');
 	}
 
-	const { user_id, kickoff_utc } = prediction[0];
+	const { user_id, kickoff } = prediction[0];
 
 	const now = DateTime.now();
-	const kickoffTime = DateTime.fromJSDate(kickoff_utc);
+	const kickoffTime = DateTime.fromJSDate(kickoff, { zone: 'utc' });
 
 	if (kickoffTime < now) {
 		throw error(400, 'Match has already started');
