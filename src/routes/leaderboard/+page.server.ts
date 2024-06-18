@@ -27,7 +27,7 @@ export const load: PageServerLoad = async ({ locals }) => {
       FROM match_prediction
       LEFT JOIN match m ON match_prediction.match_id = m.id
       WHERE NOT (match_prediction.home_team_score IS NULL AND match_prediction.away_team_score IS NULL)
-      AND m.kickoff < NOW()
+      AND NOT (m.home_team_score IS NULL AND m.away_team_score IS NULL)
     ) mp
     LEFT JOIN auth_user u ON mp.user_id = u.id
     GROUP BY mp.user_id, u.name
