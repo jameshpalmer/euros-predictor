@@ -11,7 +11,7 @@
 			<p><a href="login/azure" class="underline">Sign in</a> to get started!</p>
 		{/if}
 		<p>
-			Welcome to the quadrennial <i>Praesto Euro 2024 Footbal Predictions</i> competition! Participants
+			Welcome to the quadrennial <i>Praesto Euro 2024 Football Predictions</i> competition! Participants
 			can predict the outcomes of matches in the tournament to earn points. Here&#39;s how it works:
 		</p>
 		<h2>Group Stage Scoring</h2>
