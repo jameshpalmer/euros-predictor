@@ -6,11 +6,9 @@
 	if (data.lastUpdatedUtc) {
 		// Parse the date string as UTC
 		let utcDateTime = DateTime.fromISO(data.lastUpdatedUtc, { zone: 'utc' });
-		console.log('Parsed as UTC DateTime object:', utcDateTime.toString());
 
 		// Convert to local time zone
 		let localDateTime = utcDateTime.setZone(DateTime.local().zoneName);
-		console.log('Converted to local DateTime object:', localDateTime.toString());
 
 		// Format the local time zone date
 		lastUpdated = localDateTime.toFormat('ccc d LLLL HH:mm');

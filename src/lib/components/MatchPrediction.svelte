@@ -49,7 +49,10 @@
 	const formattedDate = localDateTime.toFormat('ccc d LLLL HH:mm');
 </script>
 
-<div class="group flex flex-col items-center">
+<div
+	id={`anchor-${userPrediction.prediction_id}`}
+	class="group flex scroll-m-36 flex-col items-center"
+>
 	<p
 		class="pointer-events-none h-0 text-sm opacity-0 sm:opacity-60 sm:transition-opacity sm:group-hover:opacity-0"
 	>
