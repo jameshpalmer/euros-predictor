@@ -110,6 +110,7 @@
 				{:then pastUserPredictions}
 					{#each pastUserPredictions as prediction}
 						<PastPrediction
+							matchId={prediction.match_id}
 							homeTeam={prediction.home_team}
 							awayTeam={prediction.away_team}
 							predictedScore={{

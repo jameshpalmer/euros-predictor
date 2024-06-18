@@ -11,6 +11,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
 
 	const pastUserPredictions = sql<
 		{
+			match_id: number;
 			home_team: string;
 			away_team: string;
 			home_team_score: number;
@@ -21,6 +22,7 @@ export const load: PageServerLoad = async ({ locals, fetch }) => {
 		}[]
 	>`
 		SELECT
+			m.id as match_id,
 			ht.name as home_team,
 			at.name as away_team,
 			m.home_team_score,
