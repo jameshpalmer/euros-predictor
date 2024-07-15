@@ -5,8 +5,6 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ locals, params }) => {
 	const { matchId } = params;
 
-	console.log(matchId);
-
 	// if match is in the past, return 404 error
 	const [matchCount] = await sql<{ count: number }[]>`
     SELECT COUNT(*) as count

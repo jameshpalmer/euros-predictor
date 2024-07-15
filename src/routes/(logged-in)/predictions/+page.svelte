@@ -99,8 +99,6 @@
 	<p>Loading...</p>
 {:else if $userPredictions.isError}
 	<p>Error: {$userPredictions.error.message}</p>
-{:else if $userPredictions.data.length === 0}
-	<p>No predictions yet!</p>
 {:else}
 	<div class="flex w-screen max-w-full flex-col items-center p-2 sm:px-8 sm:pt-6 lg:px-24">
 		{#if pastPredictionsExpanded}
